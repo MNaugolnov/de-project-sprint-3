@@ -1,0 +1,39 @@
+--clear
+DROP TABLE IF EXISTS stage.user_activity_log;
+DROP TABLE IF EXISTS stage.user_order_log;
+DROP TABLE IF EXISTS stage.customer_research;
+
+CREATE TABLE stage.customer_research(
+   ID serial ,
+   date_id TIMESTAMP,
+   category_id      INTEGER ,
+   geo_id           INTEGER ,
+   sales_qty       INTEGER,
+   sales_amt numeric(14,2),
+   PRIMARY KEY (ID)
+); 
+
+CREATE TABLE stage.user_order_log(
+   ID serial ,
+   date_time    TIMESTAMP,
+   city_id		INTEGER,
+   city_name 	VARCHAR(100),
+   customer_id  BIGINT,
+   first_name	VARCHAR(100),
+   last_name	VARCHAR(100),
+   item_id		INTEGER,
+   item_name	VARCHAR(100),
+   quantity     BIGINT,
+   payment_amount  numeric(14,2),
+   PRIMARY KEY (ID)
+); 
+
+
+CREATE TABLE stage.user_activity_log(
+   ID serial ,
+   date_time      TIMESTAMP,
+   action_id      BIGINT,
+   customer_id    BIGINT,
+   quantity       BIGINT,
+   PRIMARY KEY (ID)
+); 
