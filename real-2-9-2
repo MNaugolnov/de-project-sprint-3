@@ -1,0 +1,19 @@
+--clear
+DROP TABLE IF EXISTS prod.user_activity_log;
+DROP TABLE IF EXISTS prod.user_order_log;
+DROP TABLE IF EXISTS prod.customer_research;
+
+create table prod.customer_research
+as 
+select scr.date_id, scr.geo_id, scr.sales_qty, scr.sales_amt
+from stage.customer_research scr; 
+
+create table prod.user_activity_log
+as 
+select sual.date_time, sual.customer_id 
+from stage.user_activity_log sual; 
+
+create table prod.user_order_log
+as 
+select suol.date_time, suol.customer_id, suol.quantity, suol.payment_amount
+from stage.user_order_log suol; 
